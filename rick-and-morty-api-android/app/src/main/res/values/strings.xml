@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Urban Homework</string>
+
+    <string name="loading_characters">Loading Characters&#8230;</string>
+    <string name="loading_residents">Loading Residents In Same Location&#8230;</string>
+    <string name="character_image">Character Image</string>
+    <string name="retry">Try Again</string>
+
+    <string name="characterIDKey">characterID</string>
+    <string name="residentsID">residentsID</string>
+    <string name="details">Details</string>
+    <string name="location">Location</string>
+    <string name="residents">Residents</string>
+
+    <string name="residents_in_location">Residents in Location</string>
+    <string name="resident_name">NAME: \n %1$s</string>
+    <string name="error">Error Processing Request</string>
+    
+    //Character Details
+    <string name="character_species">SPECIES: \n</string>
+    <string name="character_where">WHERE: \n</string>
+    <string name="character_gender">GENDER: \n</string>
+    <string name="character_location">LOCATION: \n</string>
+    <string name="character_type">TYPE: \n</string>
+    <string name="character_dimension">DIMENSION: \n</string>
+
+</resources>

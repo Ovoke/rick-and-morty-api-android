@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+
+    <data>
+        <variable
+            name="characterDetails"
+            type="com.urban.androidhomework.model.CharacterDetails" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/toolbar_back_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:backgroundTint="@color/colorWhite"
+                app:fabSize="mini"
+                app:srcCompat="@drawable/ic_arrow_back"
+                app:elevation="8dp"/>
+
+            <TextView
+                android:id="@+id/toolbar_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:text="@{characterDetails.character.name}"
+                android:layout_marginStart="32dp"
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:ellipsize="end"/>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="58dp"
+            android:layout_height="58dp"
+            android:layout_gravity="center"
+            android:visibility="visible"/>
+
+        <LinearLayout
+            android:id="@+id/main_content"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:layout_marginBottom="?attr/actionBarSize"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/character_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:layout_weight="2"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center"
+                android:contentDescription="@string/character_image"/>
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textStyle="bold"
+                            android:layout_margin="8dp"
+                            android:textSize="24sp"
+                            android:text="@{characterDetails.character.name}"
+                            android:textColor="@android:color/black" />
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_weight="3"
+                            android:layout_gravity="center"
+                            android:layout_height="wrap_content">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:gravity="center"
+                                android:tint="@{characterDetails.isDead()? @android:color/holo_red_light : @android:color/holo_green_light}"
+                                app:srcCompat="@drawable/ic_brightness" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="14sp"
+                                android:layout_marginStart="8dp"
+                                android:text="@{characterDetails.character.status}"
+                                android:gravity="center_vertical"
+                                android:textColor="@android:color/black" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:layout_margin="8dp"
+                        android:textSize="24sp"
+                        android:text="@string/details"
+                        android:textColor="@android:color/black" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:drawableLeftCompat="@drawable/ic_account_circle"
+                        android:textSize="16sp"
+                        android:text="@{@string/character_species+ characterDetails.character.species}"
+                        android:drawablePadding="8dp"
+                        android:layout_marginStart="8dp"
+                        android:paddingTop="8dp"
+                        android:gravity="center_vertical"
+                        android:textColor="@android:color/black" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:drawableLeftCompat="@drawable/ic_location_on"
+                        android:textSize="16sp"
+                        android:text="@{@string/character_where+ characterDetails.location.name}"
+                        android:drawablePadding="8dp"
+                        android:layout_marginStart="8dp"
+                        android:paddingTop="8dp"
+                        android:gravity="center_vertical"
+                        android:textColor="@android:color/black" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:drawableLeftCompat="@drawable/ic_accessibility"
+                        android:textSize="16sp"
+                        android:text="@{@string/character_gender+ characterDetails.character.gender}"
+                        android:drawablePadding="8dp"
+                        android:layout_marginStart="8dp"
+                        android:paddingTop="8dp"
+                        android:gravity="center_vertical"
+                        android:textColor="@android:color/black" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:layout_margin="8dp"
+                        android:paddingTop="8dp"
+                        android:textSize="24sp"
+                        android:text="@string/location"
+                        android:textColor="@android:color/black" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:drawableLeftCompat="@drawable/ic_my_location"
+                        android:textSize="16sp"
+                        android:text="@{@string/character_location+ characterDetails.location.name}"
+                        android:drawablePadding="8dp"
+                        android:layout_marginStart="8dp"
+                        android:paddingTop="8dp"
+                        android:gravity="center_vertical"
+                        android:textColor="@android:color/black" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:drawableLeftCompat="@drawable/ic_edit_location"
+                        android:textSize="16sp"
+                        android:text="@{@string/character_type+ characterDetails.location.type}"
+                        android:drawablePadding="8dp"
+                        android:layout_marginStart="8dp"
+                        android:paddingTop="8dp"
+                        android:gravity="center_vertical"
+                        android:textColor="@android:color/black" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:drawableLeftCompat="@drawable/ic_location_city"
+                        android:textSize="16sp"
+                        android:text="@{@string/character_dimension+ characterDetails.location.dimension}"
+                        android:drawablePadding="8dp"
+                        android:layout_marginStart="8dp"
+                        android:paddingTop="8dp"
+                        android:gravity="center_vertical"
+                        android:textColor="@android:color/black" />
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/residentsButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="bottom"
+            android:backgroundTint="@color/colorAccent"
+            android:visibility="gone"
+            android:text="@string/residents_in_location" />
+
+    </FrameLayout>
+
+</layout>

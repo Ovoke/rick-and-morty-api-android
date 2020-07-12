@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/characterFragment">
+
+    <fragment
+        android:id="@+id/characterFragment"
+        android:name="com.urban.androidhomework.view.fragment.CharacterFragment"
+        android:label="Characters"
+        tools:layout="@layout/fragment_character" >
+        <action
+            android:id="@+id/action_charactersListFragment_to_characterDetailsFragment"
+            app:destination="@id/characterDetailsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/characterDetailsFragment"
+        android:name="com.urban.androidhomework.view.fragment.CharacterDetailsFragment"
+        android:label="Character Details"
+        tools:layout="@layout/fragment_character_details" >
+        <action
+            android:id="@+id/action_characterDetailsFragment_to_residentsFragment"
+            app:destination="@id/residentsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <argument
+            android:name="characterID"
+            android:defaultValue="-1"
+            app:argType="integer" />
+        <deepLink
+            app:uri="urban-android-homework:/character?id={characterID}" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/residentsFragment"
+        android:name="com.urban.androidhomework.view.fragment.ResidentsFragment"
+        android:label="Residents"
+        tools:layout="@layout/fragment_residents">
+        <argument
+            android:name="@string/residentsID"
+            app:argType="string[]" />
+    </fragment>
+
+</navigation>
